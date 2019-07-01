@@ -2,7 +2,17 @@
 
 ## Overview
 
-Idea for a long(ish)-term collaborative project for CCFP members to contribute to. I would like to leverage a functional programming approach as much as possible, while staying reasonably within the bounds of everyone's wheelhouse. It could also be an opportunity to "level up" and learn some emerging tech (e.g., since we'd be using GitHub API's, this could be a good for getting familiar with GraphQL).
+Idea for a long(ish)-term collaborative project for CCFP members to contribute to.
+
+I've spent the last few months in an extended coding bootcamp, and wanted to share some skills that I would not have been able to develop by self-teaching alone, namely:
+1. How to use Git effectively
+2. How to pair-program effectively
+3. How to debug someone else's code
+4. Generally how to collaborate with others in a shared codebase
+
+The concept for the app is somewhat "meta": an issue-finder that will query GitHub for beginner-friendly issues that would be a good starting point for contributing to open-source software. A rough idea of the UI would be a subset of [GitHub's Advanced Search](https://github.com/search/advanced) that is specifically optimized for issue queries (and can suggest beginner-related issue labels, etc.)
+
+I would like to leverage a functional programming approach as much as possible, while staying reasonably within the bounds of everyone's wheelhouse. It could also be an opportunity to "level up" and learn some emerging tech (e.g., since we'd be using GitHub API's, this could be a good for getting familiar with GraphQL).
 
 ## Proposed timeline
 
