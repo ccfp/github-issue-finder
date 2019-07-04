@@ -1,10 +1,16 @@
-version: 2
-jobs:
-  build:
-    working_directory: ~/tmp
-    docker:
-      - image: circleci/node:12
-    steps:
-      - checkout
-      - run: npm install
-      - run: npm test
+orbs:
+  react: "thefrontside/react@dev:alpha"
+version: 2.1
+workflows:
+  push:
+    jobs:
+      - react/install
+      - react/eslint:
+          requires:
+            - react/install
+      - react/test:
+          requires:
+            - react/install
+      - react/coverage:
+          requires:
+            - react/install
