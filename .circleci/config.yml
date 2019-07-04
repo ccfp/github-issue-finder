@@ -1,16 +1,19 @@
-orbs:
-  react: "thefrontside/react@dev:alpha"
-version: 2.1
-workflows:
-  push:
-    jobs:
-      - react/install
-      - react/eslint:
-          requires:
-            - react/install
-      - react/test:
-          requires:
-            - react/install
-      - react/coverage:
-          requires:
-            - react/install
+version: 2
+defaults: &defaults
+  docker:
+    - image: circleci/node:12
+jobs:
+  check:
+    <<: *defaults
+    working_directory: ~/tmp
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - dependency-cache-{{ checksum "package-lock.json" }}
+      - run: npm install
+      - save_cache:
+          paths:
+            - node_modules
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+      - run: npm run ci
