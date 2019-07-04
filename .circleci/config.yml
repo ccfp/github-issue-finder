@@ -3,7 +3,7 @@ defaults: &defaults
   docker:
     - image: circleci/node:12
 jobs:
-  check:
+  build:
     <<: *defaults
     working_directory: ~/tmp
     steps:
