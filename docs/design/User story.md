@@ -1,0 +1,3 @@
+### User story
+
+As a user of this app, I want to be able to easily discover GitHub issues that I can resolve or contribute solutions to. For example, I might want to search issues for a keyword of some technology I'm familiar with—e.g., _React_—and in my choice of language, with beginner-friendly labels (such as `good first issue` or `first-timers-only`). This will produce a list of results, sorted by created date, that I can further filter and query.
