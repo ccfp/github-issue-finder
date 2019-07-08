@@ -15,19 +15,19 @@ const SUGGESTED_LABELS = [
   "first-timers-only"
 ];
 
-const LANGUAGES = ["Haskell", "JavaScript", "OCaml", "PureScript"];
+const LANGUAGES = ["Any", "Haskell", "JavaScript", "OCaml", "PureScript"];
 
 function App() {
-  const [query, handleQueryChange] = useInput("");
+  const [keywords, handleKeywordsChange] = useInput("");
 
   const [label, setLabelValue, handleLabelChange] = useInput("");
   const [labels, setLabels] = useState([]);
 
-  const [language, handleLanguageChange] = useInput(LANGUAGES[1]);
+  const [language, handleLanguageChange] = useInput(LANGUAGES[2]);
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log({ query, labels, language });
+    console.log({ keywords, labels, language });
   };
 
   const handleSubmitLabel = e => {
@@ -41,7 +41,7 @@ function App() {
     <form onSubmit={handleSubmit}>
       <label>
         <span className="label-text">Keywords</span>
-        <input value={query} onChange={handleQueryChange} />
+        <input value={keywords} onChange={handleKeywordsChange} />
       </label>
       <label>
         <span className="label-text">With label</span>
