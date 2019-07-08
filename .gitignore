@@ -22,4 +22,11 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# editor
 /.vscode
+
+# purescript
+output
+.psc*
+.purs*
+.spago
