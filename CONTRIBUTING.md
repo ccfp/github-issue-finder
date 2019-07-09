@@ -33,6 +33,7 @@ Loosely following a convention for feature branch naming, so features would be `
 ### Git
 
 I highly recommend watching this video from one of my Lambda School classmates who used to work at GitHub (he is currently developing a Git course at Lambda)
+
 [![Git with Nick](http://img.youtube.com/vi/AT1rZ7TmD5A/0.jpg)](http://www.youtube.com/watch?v=AT1rZ7TmD5A "Git with Nick")
 
 This is the blog post he references at the beginning: [How to Write a Git Commit Message](https://chris.beams.io/posts/git-commit/). It's a short read and well worth it, but one of the main takeaways is your commit message should have the following format:
