@@ -41,7 +41,7 @@ const LabelInput = () => {
         {labelArray.map(label => (
           <li key={label}>
             <button
-              onClick={_e => setLabels(ls => ls.filter(l => l !== label))}
+              onClick={_e => setLabelArray(ls => ls.filter(l => l !== label))}
             >
               <span role="img" aria-label="X">
                 ❌
