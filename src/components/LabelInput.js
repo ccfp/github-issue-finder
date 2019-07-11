@@ -27,7 +27,7 @@ const LabelInput = () => {
       <input
         autoComplete="off"
         list="labels"
-        value={labels}
+        value={label}
         onChange={handleChange}
         onKeyDown={e => e.keyCode === 13 && handleSubmitLabel(e)}
       />
