@@ -38,7 +38,7 @@ const LabelInput = () => {
       </datalist>
       {/* This map function seems to be the troublemaker. But I can't figure out exactly why */}
       {/* <ul>
-        {labels.map(label => (
+        {labelArray.map(label => (
           <li key={label}>
             <button
               onClick={_e => setLabels(ls => ls.filter(l => l !== label))}
