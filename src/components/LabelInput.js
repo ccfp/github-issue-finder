@@ -12,7 +12,7 @@ const LabelInput = () => {
   const [label, setLabel] = useState("");
 
   const handleChange = e => {
-    setLabels(e.target.value);
+    setLabel(e.target.value);
   };
 
   const handleSubmitLabel = e => {
