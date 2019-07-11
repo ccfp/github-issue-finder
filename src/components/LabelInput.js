@@ -8,7 +8,8 @@ const SUGGESTED_LABELS = [
 ];
 
 const LabelInput = () => {
-  const [labels, setLabels] = useState([]);
+  const [labelArray, setLabelArray] = useState([]);
+  const [label, setLabel] = useState("");
 
   const handleChange = e => {
     setLabels(e.target.value);
