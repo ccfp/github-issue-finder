@@ -18,7 +18,7 @@ const LabelInput = () => {
   const handleSubmitLabel = e => {
     e.preventDefault();
     if (labels !== "") {
-      setLabels(ls => uniq([...ls, labels.toLowerCase()]));
+      setLabelArray(ls => uniq([...ls, label.toLowerCase()]));
     }
   };
   return (
