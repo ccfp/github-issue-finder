@@ -32,7 +32,7 @@ const LabelInput = () => {
         onKeyDown={e => e.keyCode === 13 && handleSubmitLabel(e)}
       />
       <datalist id="labels">
-        {SUGGESTED_LABELS.filter(l => !labels.includes(l)).map(label => (
+        {SUGGESTED_LABELS.filter(l => !labelArray.includes(l)).map(label => (
           <option key={label} value={label} />
         ))}
       </datalist>
