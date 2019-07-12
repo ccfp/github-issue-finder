@@ -1,5 +1,5 @@
 import { unwords } from ".";
-import normalize from "./normalize";
+import normalizeQueryString from "./normalizeQueryString";
 import subsequences from "./subsequences";
 
 export const toQueryString = ({ keywords = "", labels, language }) =>
@@ -15,4 +15,4 @@ export default ({ keywords, labels, language }) =>
         toQueryString({ keywords, labels: ls, language })
       )
     : [toQueryString({ keywords, labels, language })]
-  ).map(normalize);
+  ).map(normalizeQueryString);
