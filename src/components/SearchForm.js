@@ -4,6 +4,10 @@ import KeywordsInput from "./KeywordsInput";
 import LabelInput from "./LabelInput";
 import LanguageInput from "./LanguageInput";
 
+export const TEST_IDS = {
+  activeLabels: "active-labels"
+};
+
 const SearchForm = () => {
   const handleSubmit = e => {
     e.preventDefault();
