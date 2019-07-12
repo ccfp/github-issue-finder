@@ -15,7 +15,7 @@
     "react-scripts": "3.0.1"
   },
   "scripts": {
-    "ci": "npm run lint && npm run test && npm run build",
+    "ci": "npm run lint && npm run test",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "start": "react-scripts start",
@@ -36,6 +36,8 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^4.0.0",
+    "@testing-library/react": "^8.0.4",
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-prettier": "^3.1.0",
     "fast-check": "^1.16.0",

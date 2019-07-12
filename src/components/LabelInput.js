@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import uniq from "lodash/fp/uniq";
+import { normalizeLabelString } from "lib";
+import { TEST_IDS } from "./SearchForm";
 
 const SUGGESTED_LABELS = [
   "good first issue",
@@ -8,7 +10,7 @@ const SUGGESTED_LABELS = [
 ];
 
 const LabelInput = () => {
-  const [labelArray, setLabelArray] = useState([]);
+  const [labelArray, setLabelArray] = useState(SUGGESTED_LABELS);
   const [label, setLabel] = useState("");
 
   const handleChange = e => {
@@ -17,17 +19,20 @@ const LabelInput = () => {
 
   const handleSubmitLabel = e => {
     e.preventDefault();
-    if (label !== "") {
-      setLabelArray(ls => uniq([...ls, label.toLowerCase()]));
+    const normalizedLabel = normalizeLabelString(label);
+    if (normalizedLabel !== "") {
+      setLabelArray(ls => uniq([...ls, normalizedLabel]));
+      setLabel("");
     }
   };
   return (
     <label>
-      <span className="label-text">With label</span>
+      <span className="label-text">With labels</span>
       <input
         autoComplete="off"
         list="labels"
         value={label}
+        placeholder="Add a label"
         onChange={handleChange}
         onKeyDown={e => e.keyCode === 13 && handleSubmitLabel(e)}
       />
@@ -36,7 +41,7 @@ const LabelInput = () => {
           <option key={label} value={label} />
         ))}
       </datalist>
-      <ul>
+      <ul data-testid={TEST_IDS.activeLabels}>
         {labelArray.map(label => (
           <li key={label}>
             <button
