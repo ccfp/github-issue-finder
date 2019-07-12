@@ -36,8 +36,7 @@ const LabelInput = () => {
           <option key={label} value={label} />
         ))}
       </datalist>
-      {/* This map function seems to be the troublemaker. But I can't figure out exactly why */}
-      {/* <ul>
+      <ul>
         {labelArray.map(label => (
           <li key={label}>
             <button
@@ -50,7 +49,7 @@ const LabelInput = () => {
             {label}
           </li>
         ))}
-      </ul> */}
+      </ul>
     </label>
   );
 };
