@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 
-const LANGUAGES = ["Any", "Haskell", "JavaScript", "OCaml", "PureScript"];
+export const LANGUAGES = [
+  "Any",
+  "Haskell",
+  "JavaScript",
+  "OCaml",
+  "PureScript"
+];
 
 const LanguageInput = () => {
   const [language, setLanguage] = useState(LANGUAGES[2]);

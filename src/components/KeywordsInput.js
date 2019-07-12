@@ -10,7 +10,7 @@ const KeywordInput = () => {
   return (
     <label>
       <span className="label-text">Keywords</span>
-      <input value={keywords} onChange={handleChange} />
+      <input value={keywords} onChange={handleChange} placeholder="None" />
     </label>
   );
 };
