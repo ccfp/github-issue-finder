@@ -12,7 +12,7 @@ Install dependencies and start dev server
 npm i; npm start
 ```
 
-Checkout a feature branch (for example, if working on a feature called `thing-im-working-on`)
+Create and checkout a new feature branch (for example, if working on a feature called `thing-im-working-on`)
 ```bash
 git checkout -b feat/thing-im-working-on
 ```
@@ -24,7 +24,7 @@ git push -u origin feat/thing-im-working-on
 
 ### Passing CI (linting & tests)
 
-I have CircleCI set up to test every PR by linting and running the test suite. The test suite is not very extensive right now, so chances are if it fails CI it will be because of linting. Hopefully I've set things up so that, if you have Prettier installed in your editor (or using ESLint with Prettier plugin), than your editor will warn you about linting errors. If you're not sure whether your changes will pass CI, you can run `npm run ci` to check. You can also run `npm run lint:fix` and it should fix any linting failures, at which point you're safe to push changes and make a PR.
+I have CircleCI set up to test every PR by linting and running the test suite. The test suite is not very extensive right now, so chances are if it fails CI it will be because of linting. Hopefully I've set things up so that, if you have Prettier installed in your editor (or using ESLint with Prettier plugin), then your editor will warn you about linting errors. If you're not sure whether your changes will pass CI, you can run `npm run ci` to check. You can also run `npm run lint:fix` and it should fix any linting failures, at which point you're safe to push changes and make a PR.
 
 ### Branch naming
 
