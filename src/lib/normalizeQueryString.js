@@ -1,8 +1,10 @@
 import compose from "lodash/fp/compose";
-import replace from "lodash/fp/replace";
 import trim from "lodash/fp/trim";
+import { removeExtraWhitespace } from "lib/string";
 
-export default compose(
-  replace(/{ }+/g, ""),
+const normalizeQueryString = compose(
+  removeExtraWhitespace,
   trim
 );
+
+export default normalizeQueryString;

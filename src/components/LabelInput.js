@@ -35,6 +35,7 @@ const LabelInput = () => {
         placeholder="Add a label"
         onChange={handleChange}
         onKeyDown={e => e.keyCode === 13 && handleSubmitLabel(e)}
+        onBlur={handleSubmitLabel}
       />
       <datalist id="labels">
         {SUGGESTED_LABELS.filter(l => !labelArray.includes(l)).map(label => (
