@@ -1,4 +1,5 @@
-import toQueryStringArray from "./toQueryStringArray";
+import last from "lodash/fp/last";
+import toQueryStringArray from "lib/toQueryStringArray";
 
 describe("toQueryStringArray", () => {
   it("constructs a valid query given non-empty keywords, labels, and language", () => {
@@ -7,7 +8,7 @@ describe("toQueryStringArray", () => {
       labels: ["good first issue", "help wanted"],
       language: "JavaScript"
     };
-    expect(toQueryStringArray(input)).toHaveLength(3);
+    expect(toQueryStringArray(input)).toHaveLength(4);
     expect(toQueryStringArray(input)[0]).toBe(
       'test label:"good first issue" label:"help wanted" language:JavaScript'
     );
@@ -17,6 +18,7 @@ describe("toQueryStringArray", () => {
     expect(toQueryStringArray(input)[2]).toBe(
       'test label:"help wanted" language:JavaScript'
     );
+    expect(last(toQueryStringArray(input))).toBe("test language:JavaScript");
   });
   it("constructs a valid query given empty labels array", () => {
     const input = {
@@ -26,7 +28,7 @@ describe("toQueryStringArray", () => {
     };
     expect(toQueryStringArray(input)).toHaveLength(1);
     expect(toQueryStringArray(input)[0]).toBe(
-      "example search  language:JavaScript"
+      "example search language:JavaScript"
     );
   });
   it("constructs a valid query given empty search and empty labels array", () => {
@@ -44,7 +46,7 @@ describe("toQueryStringArray", () => {
       labels: ["help wanted", "good first issue"],
       language: "Any"
     };
-    expect(toQueryStringArray(input)).toHaveLength(3);
+    expect(toQueryStringArray(input)).toHaveLength(4);
     expect(toQueryStringArray(input)[0]).toBe(
       'example label:"help wanted" label:"good first issue"'
     );
