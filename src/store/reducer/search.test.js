@@ -12,3 +12,5 @@ describe("searchReducer", () => {
     );
   });
 });
+
+// @TODO: Add snapshot testing for reducers
