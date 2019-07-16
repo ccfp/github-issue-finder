@@ -1,16 +1,16 @@
 import React from "react";
-import { Route } from "react-router-dom";
 import Home from "views/Home";
 import Results from "views/Results";
+import { Router } from "@reach/router";
 
 import "./App.scss";
 
 function App() {
   return (
-    <>
-      <Route path="/" exact component={Home} />
-      <Route path="/results" component={Results} />
-    </>
+    <Router>
+      <Home path="/" />
+      <Results path="/results" />
+    </Router>
   );
 }
 
