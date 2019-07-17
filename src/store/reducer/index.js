@@ -1,5 +1,2 @@
-import search from "store/reducer/search";
-import results from "store/reducer/results";
-import { combineReducers } from "redux";
-
-export default combineReducers({ search, results });
+export { default as search } from "store/reducer/search";
+export { default as results } from "store/reducer/results";
