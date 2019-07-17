@@ -8,9 +8,8 @@ import { search, results } from "store/reducer";
 
 import "./App.scss";
 
-const [SearchProvider, useSearch] = createStore(search);
-const [ResultsProvider, useResults] = createStore(results);
-export { useSearch, useResults };
+export const [SearchProvider, useSearch] = createStore(search);
+export const [ResultsProvider, useResults] = createStore(results);
 
 function App() {
   return (

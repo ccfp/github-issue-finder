@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
+import { setKeywords } from "store/actions";
+import { useSearch } from "App";
 
 const KeywordInput = () => {
-  const handleChange = e => {
-    setKeywords(e.target.value);
-  };
+  const [{ keywords }, dispatch] = useSearch();
 
-  const [keywords, setKeywords] = useState("");
+  const handleChange = e => {
+    dispatch(setKeywords(e.target.value));
+  };
 
   return (
     <label>

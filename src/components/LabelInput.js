@@ -1,29 +1,29 @@
-import React, { useState } from "react";
-import uniq from "lodash/fp/uniq";
-import { normalizeLabelString } from "lib";
-import { TEST_IDS } from "./SearchForm";
+import React from "react";
 
-const SUGGESTED_LABELS = [
-  "good first issue",
-  "help wanted",
-  "first-timers-only"
-];
+import { TEST_IDS } from "./SearchForm";
+import {
+  addSelectedLabel,
+  removeSelectedLabel,
+  setCurrentLabel
+} from "store/actions";
+import { useSearch } from "App";
 
 const LabelInput = () => {
-  const [labelArray, setLabelArray] = useState(SUGGESTED_LABELS);
-  const [label, setLabel] = useState("");
+  const [
+    { currentLabel, selectedLabels, suggestedLabels },
+    dispatch
+  ] = useSearch();
 
   const handleChange = e => {
-    setLabel(e.target.value);
+    dispatch(setCurrentLabel(e.target.value));
+  };
+  const handleRemoveLabel = label => _e => {
+    dispatch(removeSelectedLabel(label));
   };
 
-  const handleSubmitLabel = e => {
+  const handleAddLabel = e => {
     e.preventDefault();
-    const normalizedLabel = normalizeLabelString(label);
-    if (normalizedLabel !== "") {
-      setLabelArray(ls => uniq([...ls, normalizedLabel]));
-      setLabel("");
-    }
+    dispatch(addSelectedLabel(e.target.value));
   };
   return (
     <label>
@@ -31,23 +31,21 @@ const LabelInput = () => {
       <input
         autoComplete="off"
         list="labels"
-        value={label}
+        value={currentLabel}
         placeholder="Add a label"
         onChange={handleChange}
-        onKeyDown={e => e.keyCode === 13 && handleSubmitLabel(e)}
-        onBlur={handleSubmitLabel}
+        onKeyDown={e => e.keyCode === 13 && handleAddLabel(e)}
+        onBlur={handleAddLabel}
       />
       <datalist id="labels">
-        {SUGGESTED_LABELS.filter(l => !labelArray.includes(l)).map(label => (
+        {suggestedLabels.map(label => (
           <option key={label} value={label} />
         ))}
       </datalist>
       <ul data-testid={TEST_IDS.activeLabels}>
-        {labelArray.map(label => (
+        {selectedLabels.map(label => (
           <li key={label}>
-            <button
-              onClick={_e => setLabelArray(ls => ls.filter(l => l !== label))}
-            >
+            <button onClick={handleRemoveLabel(label)}>
               <span role="img" aria-label="X">
                 ❌
               </span>

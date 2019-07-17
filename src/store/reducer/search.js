@@ -3,7 +3,8 @@ import {
   ADD_SELECTED_LABEL,
   REMOVE_SELECTED_LABEL,
   SET_SELECTED_LANGUAGE,
-  SET_KEYWORDS
+  SET_KEYWORDS,
+  SET_CURRENT_LABEL
 } from "store/constants";
 
 const DEFAULT_LABELS = ["good first issue", "help wanted", "first-timers-only"];
@@ -20,6 +21,7 @@ const LANGUAGES = [
 
 const initialState = {
   keywords: "",
+  currentLabel: "",
   suggestedLabels: DEFAULT_LABELS,
   selectedLabels: DEFAULT_LABELS,
   languages: LANGUAGES,
@@ -46,11 +48,18 @@ const selectedLabels = (state = initialState.selectedLabels, action) => {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_SELECTED_LABEL:
+      return {
+        ...state,
+        currentLabel: "",
+        selectedLabels: selectedLabels(state.selectedLabels, action)
+      };
     case REMOVE_SELECTED_LABEL:
       return {
         ...state,
         selectedLabels: selectedLabels(state.selectedLabels, action)
       };
+    case SET_CURRENT_LABEL:
+      return { ...state, currentLabel: action.payload };
     case SET_SELECTED_LANGUAGE:
       return { ...state, selectedLanguage: action.payload };
     case SET_KEYWORDS:
