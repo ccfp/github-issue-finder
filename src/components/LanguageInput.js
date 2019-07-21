@@ -1,25 +1,19 @@
-import React, { useState } from "react";
-
-export const LANGUAGES = [
-  "Any",
-  "Haskell",
-  "JavaScript",
-  "OCaml",
-  "PureScript"
-];
+import React from "react";
+import { useSearch } from "App";
+import { setSelectedLanguage } from "store/actions";
 
 const LanguageInput = () => {
-  const [language, setLanguage] = useState(LANGUAGES[2]);
+  const [{ languages, selectedLanguage }, dispatch] = useSearch();
 
   const handleChange = e => {
-    setLanguage(e.target.value);
+    dispatch(setSelectedLanguage(e.target.value));
   };
 
   return (
     <label>
       <span className="label-text">In language</span>
-      <select value={language} onChange={handleChange}>
-        {LANGUAGES.map(language => (
+      <select value={selectedLanguage} onChange={handleChange}>
+        {languages.map(language => (
           <option key={language} value={language}>
             {language}
           </option>
