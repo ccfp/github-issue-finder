@@ -1,8 +1,8 @@
 import { unwords } from "lib/string";
-import normalizeQueryString from "lib/normalizeQueryString";
+import normalizeSearchString from "lib/normalizeSearchString";
 import subsequences from "lib/subsequences";
 
-const toQueryString = ({ keywords = "", labels, language }) =>
+const toSearchString = ({ keywords = "", labels, language }) =>
   unwords([
     keywords,
     unwords(labels.map(label => `label:"${label}"`)),
@@ -11,7 +11,7 @@ const toQueryString = ({ keywords = "", labels, language }) =>
 
 const toQueryStringArray = ({ keywords, labels, language }) =>
   subsequences(labels)
-    .map(ls => toQueryString({ keywords, labels: ls, language }))
-    .map(normalizeQueryString);
+    .map(ls => toSearchString({ keywords, labels: ls, language }))
+    .map(normalizeSearchString);
 
-export { toQueryString, toQueryStringArray as default };
+export { toSearchString, toQueryStringArray as default };
