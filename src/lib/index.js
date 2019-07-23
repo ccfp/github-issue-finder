@@ -1,4 +1,4 @@
 export { default as normalizeLabelString } from "lib/normalizeLabelString";
-export { default as normalizeQueryString } from "lib/normalizeQueryString";
-export { default as toQueryStringArray } from "lib/toQueryStringArray";
+export { default as normalizeSearchString } from "lib/normalizeSearchString";
+export { default as toSearchStringArray } from "lib/toSearchStringArray";
 export { default as subsequences } from "lib/subsequences";
