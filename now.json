@@ -7,6 +7,9 @@
       "use": "@now/static-build",
       "config": {
         "distDir": "build"
+      },
+      "env": {
+        "REACT_APP_GH_KEY": "@github-api-key"
       }
     }
   ],
