@@ -49,13 +49,14 @@ function Results() {
               {issue.repository.owner.login} {issue.updatedAt}
             </h5>
             <p>{issue.body}</p>
+            <p>
+              {issue.labels.nodes.map(label => (
+                <button>{label.name}</button>
+              ))}
+            </p>
           </li>
         ))}
       </ul>
-      {/* <pre> */}
-      {/* @TODO: Replace this `stringify` call with a component for each issue */}
-      {/* {loading ? "Loading" : JSON.stringify(exampleLens(data), null, 2)} */}
-      {/* </pre> */}
     </main>
   );
 }
