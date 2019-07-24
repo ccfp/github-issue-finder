@@ -33,17 +33,29 @@ function Results() {
     // need to read them from the query string:
     // https://en.wikipedia.org/wiki/Query_string
     variables: {
-      query: 'react label:"good first issue"'
+      search: 'react label:"good first issue"'
     }
   });
+  console.log(exampleLens(data));
   return (
     <main>
       <h1>GitHub Issue Finder</h1>
       <h2>Results</h2>
-      <pre>
-        {/* @TODO: Replace this `stringify` call with a component for each issue */}
-        {loading ? "Loading" : JSON.stringify(exampleLens(data), null, 2)}
-      </pre>
+      <ul>
+        {exampleLens(data).map(issue => (
+          <li key={issue.id}>
+            <h4>{issue.title}</h4>
+            <h5>
+              {issue.repository.owner.login} {issue.updatedAt}
+            </h5>
+            <p>{issue.body}</p>
+          </li>
+        ))}
+      </ul>
+      {/* <pre> */}
+      {/* @TODO: Replace this `stringify` call with a component for each issue */}
+      {/* {loading ? "Loading" : JSON.stringify(exampleLens(data), null, 2)} */}
+      {/* </pre> */}
     </main>
   );
 }
@@ -52,8 +64,8 @@ export default Results;
 
 // @TODO: Fix this query to get all the info that is illustrated in the mock-up
 const exampleQuery = gql`
-  query ExampleQuery($query: String!) {
-    search(query: $query, first: 10, type: ISSUE) {
+  query ExampleQuery($search: String!) {
+    search(query: $search, first: 10, type: ISSUE) {
       edges {
         node {
           ... on Issue {
@@ -65,6 +77,8 @@ const exampleQuery = gql`
             }
             updatedAt
             title
+            id
+            body
             labels(first: 10) {
               nodes {
                 name
