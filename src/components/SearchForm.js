@@ -1,5 +1,7 @@
 import React from "react";
-
+import { useSearch } from "App";
+import { stringify } from "query-string";
+import { navigate } from "@reach/router";
 import KeywordsInput from "./KeywordsInput";
 import LabelInput from "./LabelInput";
 import LanguageInput from "./LanguageInput";
@@ -8,10 +10,18 @@ export const TEST_IDS = {
   activeLabels: "active-labels"
 };
 
+const [{ keywords, selectedLabels, selectedLanguage }] = useSearch();
+
 const SearchForm = () => {
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(e);
+    const str = stringify({
+      keywords,
+      labels: selectedLabels,
+      language: selectedLanguage
+    });
+    navigate(`/results?${str}`);
+    console.log(str);
   };
 
   return (
