@@ -4,8 +4,8 @@ import { useQuery } from "@apollo/react-hooks";
 import get from "lodash/fp/get";
 import compose from "lodash/fp/compose";
 import map from "lodash/fp/map";
+import toQueryStringArray from "../lib/toSearchStringArray";
 
-// @TODO: Add REACT_APP_GH_KEY to Now variables
 const headers = {
   authorization: `Bearer ${process.env.REACT_APP_GH_KEY}`
 };
@@ -26,6 +26,12 @@ const exampleLens = compose(
 );
 
 function Results() {
+  let params = new URL(document.location).searchParams;
+  let keywords = params.get("keywords");
+  let labels = params.get("labels");
+  let language = params.get("language");
+  console.log(keywords, labels, language);
+
   const { data, loading } = useQuery(exampleQuery, {
     client,
     // @TODO: Read variables from URL query string
@@ -33,10 +39,17 @@ function Results() {
     // need to read them from the query string:
     // https://en.wikipedia.org/wiki/Query_string
     variables: {
-      search: 'react label:"good first issue"'
+      search: keywords,
+      labels,
+      language
     }
   });
+
   console.log(exampleLens(data));
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <main>
       <h1>GitHub Issue Finder</h1>
