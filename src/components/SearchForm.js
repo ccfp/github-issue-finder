@@ -10,9 +10,9 @@ export const TEST_IDS = {
   activeLabels: "active-labels"
 };
 
-const [{ keywords, selectedLabels, selectedLanguage }] = useSearch();
-
 const SearchForm = () => {
+  const [{ keywords, selectedLabels, selectedLanguage }] = useSearch();
+
   const handleSubmit = e => {
     e.preventDefault();
     const str = stringify({
